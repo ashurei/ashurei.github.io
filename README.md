@@ -1,109 +1,353 @@
-# The Tactile theme
+# whiteglass
 
-[![Build Status](https://travis-ci.org/pages-themes/tactile.svg?branch=master)](https://travis-ci.org/pages-themes/tactile) [![Gem Version](https://badge.fury.io/rb/jekyll-theme-tactile.svg)](https://badge.fury.io/rb/jekyll-theme-tactile)
+[![Gem Version](https://badge.fury.io/rb/jekyll-whiteglass.svg)](https://badge.fury.io/rb/jekyll-whiteglass)
+[![Build Status](https://travis-ci.org/yous/whiteglass.svg?branch=master)](https://travis-ci.org/yous/whiteglass)
 
-*Tactile is a Jekyll theme for GitHub Pages. You can [preview the theme to see what it looks like](http://pages-themes.github.io/tactile), or even [use it today](#usage).*
+Minimal, responsive Jekyll theme for hackers.
 
-![Thumbnail of Tactile](thumbnail.png)
+![whiteglass theme](screenshot.png)
+
+## Installation
+
+Add this line to your Jekyll site's Gemfile:
+
+``` ruby
+gem "jekyll-whiteglass"
+```
+
+And add this line to your Jekyll site's `_config.yml`:
+
+``` yaml
+theme: jekyll-whiteglass
+```
+
+And then execute:
+
+``` sh
+bundle
+```
+
+Or install it yourself as:
+
+``` sh
+gem install jekyll-whiteglass
+```
+
+## Quick Start
+
+1. Generate a new Jekyll blog:
+
+   ``` sh
+   jekyll new blog --skip-bundle
+   cd blog
+   ```
+
+2. Edit `Gemfile` to use whiteglass theme:
+
+   ``` ruby
+   gem "jekyll-whiteglass"
+   ```
+
+3. Edit `_config.yml` to use whiteglass theme and its plugins:
+
+   ``` yaml
+   theme: jekyll-whiteglass
+   plugins:
+     - jekyll-archives
+     - jekyll-paginate
+     - jekyll-sitemap
+
+   permalink: /:year/:month/:day/:title/
+   paginate_path: /posts/:num/
+   paginate: 5
+
+   jekyll-archives:
+     enabled:
+       - categories
+       - tags
+     layout: category_archives
+     permalinks:
+       category: /categories/:name/
+       tag: /tags/:name/
+   ```
+
+4. Copy
+   [`index.html`](https://github.com/yous/whiteglass/blob/master/index.html),
+   [`about.md`](https://github.com/yous/whiteglass/blob/master/about.md),
+   [`archives.md`](https://github.com/yous/whiteglass/blob/master/archives.md),
+   [`feed.xml`](https://github.com/yous/whiteglass/blob/master/feed.xml), and
+   [`_data/navigation.yml`](https://github.com/yous/whiteglass/blob/master/_data/navigation.yml)
+   from the theme:
+
+   ``` sh
+   rm index.md
+   curl -L -O "https://github.com/yous/whiteglass/raw/master/{index.html,about.md,archives.md,feed.xml}"
+   curl -L --create-dirs -o _data/navigation.yml https://github.com/yous/whiteglass/raw/master/_data/navigation.yml
+   ```
+
+5. Install gems and you're good to go! The blog will be available on
+   `http://127.0.0.1:4000`.
+
+   ``` sh
+   bundle install
+   bundle exec jekyll serve
+   ```
+
+## Deployment to GitHub Pages using Travis CI
+
+This theme uses [jekyll-archives](https://github.com/jekyll/jekyll-archives) gem
+which is [not supported by GitHub Pages](https://help.github.com/articles/configuring-jekyll-plugins/).
+If you want to use full features like categories and tags, I recommend you to
+use Travis CI or other CI services.
+
+To deploy using Travis CI, first copy the [`.travis.yml`](https://github.com/yous/whiteglass/blob/master/.travis.yml)
+of this repository. You can change `target-branch` (`gh-pages` by default) and
+`on.branch` (`master` by default) as you want. If you want further
+customization, see [Travis CI's documentation page](https://docs.travis-ci.com/user/deployment/pages/).
+
+You'll see there's `github-token: $GITHUB_TOKEN`, and this is what you should
+configure. Go to your [personal access tokens](https://github.com/settings/tokens)
+page, and generate new token with `public_repo` or `repo` permission as you
+need. Then go to Travis CI's settings page of your repository, and add a new
+environment variable `GITHUB_TOKEN` with the value of the token you generated.
 
 ## Usage
 
-To use the Tactile theme:
+### Customization
 
-1. Add the following to your site's `_config.yml`:
+To override the default structure and style of whiteglass, simply create the
+concerned directory at the root of your site, copy the file you wish to
+customize to that directory, and then edit the file. e.g., to override the
+[`_includes/footer_content.html`](_includes/footer_content.html) file to add
+contents to footer, create an `_includes` directory, copy
+`_includes/footer_content.html` from jekyll-whiteglass gem folder to
+`<your-site>/_includes` and start editing that file.
 
-    ```yml
-    theme: jekyll-theme-tactile
-    ```
+For example, you can add favicons to `_includes/head_custom.html`:
 
-2. Optionally, if you'd like to preview your site on your computer, add the following to your site's `Gemfile`:
-
-    ```ruby
-    gem "github-pages", group: :jekyll_plugins
-    ```
-
-## Customizing
-
-### Configuration variables
-
-Tactile will respect the following variables, if set in your site's `_config.yml`:
-
-```yml
-title: [The title of your site]
-description: [A short description of your site's purpose]
+``` html
+<link rel="icon" type="image/x-icon" href="{{ "/favicon.ico" | relative_url }}">
+<link rel="apple-touch-icon" href="{{ "/apple-touch-icon.png" | relative_url }}">
+<link rel="apple-touch-icon" sizes="76x76" href="{{ "/apple-touch-icon-76x76.png" | relative_url }}">
+<link rel="apple-touch-icon" sizes="120x120" href="{{ "/apple-touch-icon-120x120.png" | relative_url }}">
+<link rel="apple-touch-icon" sizes="152x152" href="{{ "/apple-touch-icon-152x152.png" | relative_url }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "/apple-touch-icon-180x180.png" | relative_url }}">
 ```
 
-Additionally, you may choose to set the following optional variables:
+The site's default CSS is in the gem itself,
+[`assets/main.scss`](assets/main.scss). To override the default CSS, the file
+has to exist at your site source. Do either of the following:
 
-```yml
-show_downloads: ["true" or "false" to indicate whether to provide a download URL]
-google_analytics: [Your Google Analytics tracking ID]
+- Create a new instance of `main.scss` at site source
+  - Create a new file `main.scss` at `<your-site>/assets/`
+  - Add the frontmatter dashes, and
+  - Add `@import "whiteglass";`, to `<your-site>/assets/main.scss`
+  - Add your custom CSS
+- Download the file from this repo
+  - Create a new file `main.scss` at `<your-site>/assets/`
+  - Copy the contents at [`assets/main.scss`](assets/main.scss) onto the `main.scss` you just created, and edit away
+- Copy directly from jekyll-whiteglass gem
+  - Go to your local jekyll-whiteglass gem installation directory (run `bundle show jekyll-whiteglass` to get the path to it)
+  - Copy the `assets/` folder from there into the root of `<your-site>`
+  - Change whatever values you want, inside `<your-site>/assets/main.scss`
+
+### Locale
+
+`site.lang` is used to declare the primary language for each web page within the
+site.
+
+`lang: en-US` sets the `lang` attribute for the site to the United States flavor
+of English, while `en-GB` would be for the United Kingdom style of English.
+Country codes are optional and the shorter variation `lang: en` is also
+acceptable. You may want to write a post in different language, then add `lang`
+attribute to the frontmatter of that post:
+
+``` yaml
+layout: post
+title: "안녕하세요"
+lang: ko
 ```
 
-### Stylesheet
+### Description
 
-If you'd like to add your own custom styles:
+`site.description` describes the site. This is mainly used in meta descriptions
+for improving SEO. Also, you can set `description` attribute for each post:
 
-1. Create a file called `/assets/css/style.scss` in your site
-2. Add the following content to the top of the file, exactly as shown:
-    ```scss
-    ---
-    ---
+``` yaml
+layout: post
+title: Awesome Post
+description: This is an awesome post.
+```
 
-    @import "{{ site.theme }}";
-    ```
-3. Add any custom CSS (or Sass, including imports) you'd like immediately after the `@import` line
+If you don't specify `post.description`, then `post.excerpt` will be used if it
+exist.
 
-*Note: If you'd like to change the theme's Sass variables, you must set new values before the `@import` line in your stylesheet.*
+### External URL
 
-### Layouts
+`external-url` turns the title of your post to a link. Specify a URL which you
+want to link to.
 
-If you'd like to change the theme's HTML layout:
+``` yaml
+layout: post
+title: Jekyll whiteglass theme
+external-url: https://github.com/yous/whiteglass
+```
 
-1. [Copy the original template](https://github.com/pages-themes/tactile/blob/master/_layouts/default.html) from the theme's repository<br />(*Pro-tip: click "raw" to make copying easier*)
-2. Create a file called `/_layouts/default.html` in your site
-3. Paste the default layout content copied in the first step
-4. Customize the layout as you'd like
+Then the title of your post would look like a link with text
+`Jekyll whiteglass theme →`. This also applies to your blog feed.
 
-### Overriding GitHub-generated URLs
+### Category
 
-Templates often rely on URLs supplied by GitHub such as links to your repository or links to download your project. If you'd like to override one or more default URLs:
+Each post can have `categories` attribute. It can be a string or an array. This
+will be displayed on index, archive and each post, and provide a link to the
+archive of category.
 
-1. Look at [the template source](https://github.com/pages-themes/tactile/blob/master/_layouts/default.html) to determine the name of the variable. It will be in the form of `{{ site.github.zip_url }}`.
-2. Specify the URL that you'd like the template to use in your site's `_config.yml`. For example, if the variable was `site.github.url`, you'd add the following:
-    ```yml
-    github:
-      zip_url: http://example.com/download.zip
-      another_url: another value
-    ```
-3. When your site is built, Jekyll will use the URL you specified, rather than the default one provided by GitHub.
+``` yaml
+layout: post
+title: Awesome Post
+categories: Misc
+```
 
-*Note: You must remove the `site.` prefix, and each variable name (after the `github.`) should be indent with two space below `github:`.*
+``` yaml
+layout: post
+title: Another Awesome Post
+categories:
+  - Misc
+  - Idea
+```
 
-For more information, see [the Jekyll variables documentation](https://jekyllrb.com/docs/variables/).
+### Tag
 
-## Roadmap
+Each post can have `tags` attribute. It can be a string or an array. This will
+be displayed on index, archive and each post, and provide a link to the archive
+of tag.
 
-See the [open issues](https://github.com/pages-themes/tactile/issues) for a list of proposed features (and known issues).
+``` yaml
+layout: post
+title: Awesome Post
+tags: food
+```
 
-## Project philosophy
+``` yaml
+layout: post
+title: Another Awesome Post
+tags:
+  - food
+  - trip
+```
 
-The Tactile theme is intended to make it quick and easy for GitHub Pages users to create their first (or 100th) website. The theme should meet the vast majority of users' needs out of the box, erring on the side of simplicity rather than flexibility, and provide users the opportunity to opt-in to additional complexity if they have specific needs or wish to further customize their experience (such as adding custom CSS or modifying the default layout). It should also look great, but that goes without saying.
+### Feed
+
+Create `<your-site>/feed.xml` with:
+
+``` yaml
+---
+layout: feed
+---
+```
+
+If you want to use another path for feed, you can specify a non-default path via
+your site's config.
+
+``` yaml
+feed:
+  path: atom.xml
+```
+
+Then create `<your-site>/atom.xml` with the same content of `feed.xml` above.
+
+### Comments
+
+whiteglass provides the ability to include your favourite commenting service, like [Disqus](https://disqus.com) or [Isso](https://posativ.org/isso).
+
+To enable comments on pages and posts:
+1. Overwrite the `_includes/custom_comments_provider.html` with your custom provider of comments.
+2. Add `comments: true` to your `_config.yml`.
+
+To disable comments on certain pages or posts specify `comments: false` in the front matter of the page or post.
+
+### Metadata for SEO
+
+#### Keywords
+
+Each post can have `keywords` attribute. This is a comma-separated list which is
+used in meta descriptions for improving SEO.
+
+``` yaml
+layout: post
+title: How to configure jekyll-whiteglass
+keywords: jekyll, whiteglass, github pages
+```
+
+YAML list is also available:
+
+``` yaml
+keywords:
+  - jekyll
+  - whiteglass
+  - github pages
+```
+
+#### Twitter
+
+- `site.twitter_username` sets `twitter:site` and `twitter:creator` meta tag
+- `site.twitter_image` sets `twitter:image:src` meta tag
+- `page.twitter_card.type` sets `twitter:card` meta tag (default: `summary`)
+  - If `page.twitter_card.type` is `gallery`, it sets `twitter:image0`, `twitter:image1`, `twitter:image2` and `twitter:image3` meta tags with `page.twitter_card.image`, `page.twitter_card.image1`, `page.twitter_card.image2` and `page.twitter_card.image3`, respectively
+  - If `page.twitter_card.type` is `photo`, `page.twitter_card.width` sets `twitter:image:width` meta tag and `page.twitter_card.height` sets `twitter:image:height` meta tag
+- `page.twitter_card.creator` sets `twitter:creator` meta tag. It overrides `site.twitter_username`
+- `page.twitter_card.image` sets `twitter:image:src` meta tag if `page.twitter_card.type` is not `gallery`. It overrides `site.twitter_image`
+
+#### Facebook
+
+- `site.facebook_app_id` sets `fb:admins` meta tag
+- `site.facebook_page` sets `article:author` meta tag
+- `site.facebook_image` sets `og:image` meta tag
+- `page.facebook.image` sets `og:image` meta tag. It overrides `site.facebook_image`
+
+### Navigation
+
+To define header links, add titles and URLs under the `main` key in
+`_data/navigation.yml`:
+
+``` yaml
+main:
+  - title: "About"
+    url: /about/
+  - title: "Archives"
+    url: /archives/
+  - title: "GitHub"
+    url: https://github.com/yous/whiteglass
+```
+
+### Enabling Google Analytics
+
+To enable Google Analytics, add the following lines to your Jekyll site:
+
+``` yaml
+google_analytics: UA-NNNNNNNN-N
+```
 
 ## Contributing
 
-Interested in contributing to Tactile? We'd love your help. Tactile is an open source project, built one contribution at a time by users like you. See [the CONTRIBUTING file](docs/CONTRIBUTING.md) for instructions on how to contribute.
+Bug reports and pull requests are welcome on GitHub at
+<https://github.com/yous/whiteglass>. This project is intended to be a safe,
+welcoming space for collaboration, and contributors are expected to adhere to
+the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-### Previewing the theme locally
+## Development
 
-If you'd like to preview the theme locally (for example, in the process of proposing a change):
+To set up your environment to develop this theme, run `bundle install`.
 
-1. Clone down the theme's repository (`git clone https://github.com/pages-themes/tactile`)
-2. `cd` into the theme's directory
-3. Run `script/bootstrap` to install the necessary dependencies
-4. Run `bundle exec jekyll serve` to start the preview server
-5. Visit [`localhost:4000`](http://localhost:4000) in your browser to preview the theme
+Your theme is setup just like a normal Jekyll site! To test your theme, run
+`bundle exec jekyll serve` and open your browser at
+`http://localhost:4000/whiteglass/`. This starts a Jekyll server using your
+theme. Add pages, documents, data, etc. like normal to test your theme's
+contents. As you make modifications to your theme and to your content, your site
+will regenerate and you should see the changes in the browser after a refresh,
+just like normal.
 
-### Running tests
+## License
 
-The theme contains a minimal test suite, to ensure a site with the theme would build successfully. To run the tests, simply run `script/cibuild`. You'll need to run `script/bootstrap` one before the test script will work.
+The theme is available as open source under the terms of the
+[MIT License](http://opensource.org/licenses/MIT).
