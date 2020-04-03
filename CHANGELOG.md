@@ -1,90 +1,23 @@
-# ChangeLog
+# Changelog
 
-## 1.9.1 (2019-08-26)
+This is a manually generated log to track changes to the repository for each release. 
+Each section should include general headers such as **Implemented enhancements** 
+and **Merged pull requests**. All closed issued and bug fixes should be 
+represented by the pull requests that fixed them.
+Critical items to know are:
 
-- Restore colors of code in blockquotes
-- Fix insufficient contrast of .post-continue
+ - renamed commands
+ - deprecated / removed commands
+ - changed defaults
+ - backward incompatible changes
+ - migration guidance
+ - changed behaviour
 
-## 1.9.0 (2019-08-26)
-
-- Adjust $grey-color to conform to WCAG 2.0 AA (#26)
-- Support Jekyll 4.0
-- Fix insufficient contrast in syntax highlighting (#26)
-- Validate HTML, CSS, SVG files with html5validator
-- Test accessibility of site with pa11y-ci
-
-## 1.8.2 (2019-05-25)
-
-- Use font-display: swap for Google Fonts
-
-## 1.8.1 (2019-05-15)
-
-- DNS prefetch for Google Fonts
-
-## 1.8.0 (2019-05-07)
-
-- Loosen version requirements for bundler
-- Include basic meta tags even without facebook_app_id
-- Update syntax highlighting CSS to rouge's GitHub style
-
-## 1.7.1 (2018-09-13)
-
-- Set proper word-wrap for long lines
-
-## 1.7.0 (2018-05-24)
-
-- Use Google Fonts CSS directly with preconnect
-
-## 1.6.1 (2018-04-09)
-
-- Fix lang attribute for post with external URL
-
-## 1.6.0 (2018-04-09)
-
-- Appropriately size h1s in the post body (#19)
-- Update code for Web Font Loader
-- Link external URL directly for each post (#20)
-
-## 1.5.0 (2017-12-27)
-
-- Support tags (#17)
-
-## 1.4.2 (2017-11-21)
-
-- Add some styling for tables (#15)
-
-## 1.4.1 (2017-11-03)
-
-- Disable comments by default
-
-## 1.4.0 (2017-11-01)
-
-- Support YAML list for keywords (Fix #7)
-- Add ability to provide a comments provider for pages and posts (#10)
-
-## 1.3.0 (2017-02-20)
-
-- Fix typos of the theme description
-- Add powered-by links to the footer
-
-## 1.2.1 (2017-01-23)
-
-- Make theme can be overridden (#2)
-
-## 1.2.0 (2017-01-16)
-
-- Use excerpt for meta tags (#1)
-
-## 1.1.0 (2017-01-07)
-
-- Make feed path configurable
-- Empty `head_custom.html` to prevent adding comments
-
-## 1.0.1 (2017-01-07)
-
-- Fix RSS feed URL
-- Bump jekyll-sitemap to 1.0
-
-## 1.0.0 (2017-01-06)
-
-- Initial release
+## [master](https://github.com/vsoch/docsy-jekyll/tree/master)
+ - bug with link in top breadcrumb (404) missing baseurl (0.0.15)
+ - bug that news items (posts) don't render in search (0.0.14)
+ - minimum width of 150px for top right site name (0.0.13)
+ - tags page and option to link to it from post/docs tags (0.0.12)
+ - adding search endpoint tags to docs (0.0.11)
+ - adding site.url to config, making links in readme absolute (0.0.1)
+ - start of theme  (0.0.0)
