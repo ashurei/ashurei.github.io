@@ -172,7 +172,8 @@ body {
     line-height: 1.5;
     color: #222;
     text-align: left;
-    background-color: #fff
+    background-color: #fff;
+    word-break: break-all
 }
 
 [tabindex="-1"]:focus {
