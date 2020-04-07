@@ -4,7 +4,7 @@ excluded_in_search: true
 ---
 
 @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i";
-@import url("http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css");
+@import url("https://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css");
 @fa-font-path: "../webfonts";
 
 .gh-source {
