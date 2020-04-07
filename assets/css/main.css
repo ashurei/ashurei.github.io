@@ -501,6 +501,16 @@ h1,
     font-size: 2.25rem
 }
 
+/* 2020.04.07 Added by ashurei */
+h1:after {
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid rgba(0, 0, 0, .1);
+    margin: 10px 0px
+}
+/* */
+
 h2,
 .h2 {
     font-size: 2rem

@@ -1,6 +1,7 @@
 ---
 layout: default
 ---
+<time class="post-date" style="color:#757575" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%Y/%m/%d" }}</time>
 {{ content }}
 {% include toc.html %}
 {% include permalinks.html %}

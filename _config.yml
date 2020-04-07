@@ -68,13 +68,16 @@ fixedNav: 'true' # true or false
 
 permalink: /:year/:title/
 markdown: kramdown
-exclude: [_site, CHANGELOG.md, LICENSE, README.md, vendor]
+exclude: [Gemfile, Gemfile.lock,_site, CHANGELOG.md, LICENSE, README.md, vendor]
 
 # Collections
 collections:
   docs:
     output: true
     permalink: /:collection/:path
+  oracle:
+    output: true
+    permalink: /docs/:collection/:path
 
 # Defaults
 defaults:
@@ -83,13 +86,16 @@ defaults:
       type: "docs"
     values:
       layout: "page"
+      comments: true
   - scope:
-      path: "_pages"
+      path: ""
       type: "pages"
     values:
       layout: "page"
+      comments: true
   - scope:
       path: "_posts"
       type: "posts"
     values:
       layout: "post"
+      comments: true

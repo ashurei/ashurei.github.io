@@ -2,18 +2,18 @@
 layout: page
 title: Documentation
 permalink: /docs/
+location: home
 ---
 
 # Documentation
 
-Welcome to the {{ site.title }} Documentation pages! Here you can quickly jump to a 
-particular page.
+Archive of Documentation.
 
 <div class="section-index">
-    <hr class="panel-line">
-    {% for post in site.docs  %}        
-    <div class="entry">
-    <h5><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h5>
-    <p>{{ post.description }}</p>
-    </div>{% endfor %}
+	{% for post in site.docs  %}        
+	{% if post.location == 'content' %}
+	<div class="entry">
+	<h5><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h5>
+	<p>{{ post.description }}</p>
+	</div>{% endif %}{% endfor %}
 </div>

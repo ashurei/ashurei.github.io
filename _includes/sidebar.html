@@ -4,9 +4,25 @@
 	<button class="btn btn-link td-sidebar__toggle d-md-none p-0 ml-3 fas fa-bars" type="button" data-toggle="collapse" data-target="#td-section-nav" aria-controls="td-docs-nav" aria-expanded="false" aria-label="Toggle section navigation">
 	</button>
 </form>
+{% if page.location == 'home' %}
+<nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+	<ul class="td-sidebar-nav__section pr-md-3">
+		<li class="td-sidebar-nav__section-title active"><b style="color:#7b7b7b">Category</b></li>
+		<hr class="panel-line">
+		{% for list in site.data.docs_nav %}
+		<ul class="td-sidebar-nav__section pr-md-3">
+			<li class="td-sidebar-nav__section-title">
+				<a href="{{ site.baseurl }}/{{ list.path }}" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">{{ list.title }}</a>
+			</li>
+		</ul>
+		{% endfor %}
+	</ul>
+</nav>
+{% else %}
 <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
 	<ul class="td-sidebar-nav__section pr-md-3" id="TOC">
 		<!-- Links will be appended here-->
 	</ul>
 </nav>
+{% endif %}
 </div>
