@@ -2,9 +2,10 @@
 layout: default
 title: mysql
 location: home
+comments: false
 ---
 
-# {{ page.title }}
+# MySQL
 
 <div class="section-index">
 <!--<hr class="panel-line" />-->

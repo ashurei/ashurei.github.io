@@ -2,9 +2,10 @@
 layout: default
 title: oracle
 location: home
+comments: false
 ---
 
-# {{ page.title }}
+# Oracle
 
 <div class="section-index">
 <!--<hr class="panel-line" />-->

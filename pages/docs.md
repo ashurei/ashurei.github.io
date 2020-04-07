@@ -3,6 +3,7 @@ layout: page
 title: Documentation
 permalink: /docs/
 location: home
+comments: false
 ---
 
 # Documentation

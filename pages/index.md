@@ -2,6 +2,7 @@
 layout: page
 title: Ashurei Blog
 permalink: /
+comments: false
 ---
 
 # Ashurei's Blog

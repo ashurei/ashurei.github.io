@@ -2,9 +2,10 @@
 layout: default
 title: linux
 location: home
+comments: false
 ---
 
-# {{ page.title }}
+# Linux
 
 <div class="section-index">
 <!--<hr class="panel-line" />-->
