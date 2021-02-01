@@ -7,6 +7,8 @@ comments: false
 
 # Ashurei's Blog
 
+<a href="https://coupa.ng/bQOWR7" target="_blank" referrerpolicy="unsafe-url"><img src="https://ads-partners.coupang.com/banners/432844?subId=&traceId=V0-301-879dd1202e5c73b2-I432844&w=150&h=60" alt=""></a>
+
 Github blog + Jekyll theme 를 이용한 블로그 구성
 
 ## 1. Jekyll theme
