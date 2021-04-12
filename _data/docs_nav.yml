@@ -4,3 +4,5 @@
   path: docs/mysql
 - title: Linux
   path: docs/linux
+- title: PostgreSQL
+  path: docs/postgresql
